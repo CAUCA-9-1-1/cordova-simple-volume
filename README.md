@@ -8,7 +8,7 @@ Control volume and Receive volume events (iOS /Android)
 
 ## Installation
 
-    cordova plugin add https://github.com/online-data-intelligence/cordova-simple-volume
+    cordova plugin add cordova-simple-volume -S
 
 ### Methods
 
