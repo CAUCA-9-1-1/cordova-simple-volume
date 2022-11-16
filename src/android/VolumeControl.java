@@ -40,6 +40,16 @@ public class VolumeControl extends CordovaPlugin {
             final PluginResult result = new PluginResult(PluginResult.Status.OK, Double.toString(volume));
             callbackContext.sendPluginResult(result);
             return true;
+        } else if (action.equals("getNotificationVolumeCommand")) {
+            double volume = this.getNotificationVolume();
+            final PluginResult result = new PluginResult(PluginResult.Status.OK, Double.toString(volume));
+            callbackContext.sendPluginResult(result);
+            return true;
+        } else if (action.equals("getRingVolumeCommand")) {
+            double volume = this.getRingVolume();
+            final PluginResult result = new PluginResult(PluginResult.Status.OK, Double.toString(volume));
+            callbackContext.sendPluginResult(result);
+            return true;
         }
         return false;
 
@@ -74,10 +84,22 @@ public class VolumeControl extends CordovaPlugin {
     }
 
     public double getVolume() {
+        return getVolumeOfStream(AudioManager.STREAM_MUSIC);
+    }
+
+    public double getNotificationVolume() {
+        return getVolumeOfStream(AudioManager.STREAM_NOTIFICATION);
+    }
+
+    public double getRingVolume() {
+        return getVolumeOfStream(AudioManager.STREAM_RING);
+    }
+
+    private double getVolumeOfStream(final int stream) {
         Context context = this.cordova.getActivity().getApplicationContext();
         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-        int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
-        int streamVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
+        int maxVolume = audioManager.getStreamMaxVolume(stream);
+        int streamVolume = audioManager.getStreamVolume(stream);
         double volume = (double) streamVolume / (double) maxVolume;
         return volume;
     }

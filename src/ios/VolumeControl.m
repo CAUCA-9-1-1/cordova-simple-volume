@@ -78,6 +78,24 @@ static void *OutputVolumeContext = &OutputVolumeContext;
 }
 
 
+- (void)getNotificationVolumeCommand:(CDVInvokedUrlCommand *)command
+{
+    float volume = 0;
+
+    CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@(volume).stringValue];
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+}
+
+
+- (void)getRingVolumeCommand:(CDVInvokedUrlCommand *)command
+{
+    float volume = 0;
+
+    CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@(volume).stringValue];
+    [self.commandDelegate sendPluginResult:result callbackId:command.callbackId];
+}
+
+
 - (void)startObservingVolumeChanges
 {
     [self.avSession setActive: true error:nil];

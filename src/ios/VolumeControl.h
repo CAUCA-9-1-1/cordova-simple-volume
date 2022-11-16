@@ -20,5 +20,7 @@
 - (void)hideVolumeNotifications;
 - (void)setVolume:(float)level;
 - (void)getVolumeCommand:(CDVInvokedUrlCommand *)command;
+- (void)getNotifcationVolumeCommand:(CDVInvokedUrlCommand *)command;
+- (void)getRingVolumeCommand:(CDVInvokedUrlCommand *)command;
 
 @end

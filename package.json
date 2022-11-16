@@ -1,20 +1,20 @@
 {
-	"name": "cordova-simple-volume",
+	"name": "@CAUCA-9-1-1/cordova-simple-volume",
 	"version": "1.0.4",
 	"description": "Cordova plugin which notifies when the user presses the volume buttons of the device",
 	"cordova": {
-		"id": "cordova-simple-volume",
+		"id": "@CAUCA-9-1-1/cordova-simple-volume",
 		"platforms": [ "android", "ios" ]
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/injitools/cordova-simple-volume.git"
+		"url": "git+https://github.com/CAUCA-9-1-1/cordova-simple-volume.git"
 	},
 	"keywords": [ "ecosystem:cordova", "cordova-android", "cordova-ios", "volume", "buttons" ],
-	"author": "Boudewijn Geiger",
+	"author": "CAUCA",
 	"license": "Apache 2.0",
 	"bugs": {
-		"url": "https://github.com/injitools/cordova-simple-volume/issues"
+		"url": "https://github.com/CAUCA-9-1-1/cordova-simple-volume/issues"
 	},
-	"homepage": "https://github.com/boedy/cordova-volume-control"
+	"homepage": "https://github.com/CAUCA-9-1-1/cordova-simple-volume"
 }
