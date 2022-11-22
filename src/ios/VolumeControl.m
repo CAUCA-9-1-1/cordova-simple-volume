@@ -71,6 +71,11 @@ static void *OutputVolumeContext = &OutputVolumeContext;
 
 - (void)getVolumeCommand:(CDVInvokedUrlCommand *)command
 {
+    if (!self.avSession) {
+        self.avSession = [AVAudioSession sharedInstance];
+        [self.avSession setActive: true error:nil];
+    }
+
     float volume = self.avSession.outputVolume;
 
     CDVPluginResult *result = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@(volume).stringValue];
@@ -101,7 +106,7 @@ static void *OutputVolumeContext = &OutputVolumeContext;
     [self.avSession setActive: true error:nil];
     self.launchVolume = self.avSession.outputVolume;
     [self.avSession addObserver:self forKeyPath: @"outputVolume" options:(NSKeyValueObservingOptionInitial |
-                                                                          NSKeyValueObservingOptionNew) context:OutputVolumeContext];
+                                                                        NSKeyValueObservingOptionNew) context:OutputVolumeContext];
 }
 
 - (void)stopObservingVolumeChanges
@@ -115,8 +120,8 @@ static void *OutputVolumeContext = &OutputVolumeContext;
         [self.volumeView removeFromSuperview];
         self.volumeView = nil;
     }
-    
 }
+
 - (void)hideVolumeNotifications
 {
     if ( ! self.volumeView){
