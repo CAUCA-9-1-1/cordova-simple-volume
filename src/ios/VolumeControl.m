@@ -111,7 +111,9 @@ static void *OutputVolumeContext = &OutputVolumeContext;
 
 - (void)stopObservingVolumeChanges
 {
-    [self.avSession removeObserver:self forKeyPath: @"outputVolume" context:OutputVolumeContext];
+    if (self.launchVolume) {
+        [self.avSession removeObserver:self forKeyPath: @"outputVolume" context:OutputVolumeContext];
+    }
 }
 
 - (void)showVolumeNotifications
